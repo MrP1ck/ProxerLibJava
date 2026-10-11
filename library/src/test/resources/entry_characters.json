@@ -1,0 +1,21 @@
+{
+  "error": 0,
+  "message": "Abfrage erfolgreich",
+  "data": [
+    {
+      "id": "517",
+      "name": "Brook",
+      "type": "main"
+    },
+    {
+      "id": "978",
+      "name": "Franky",
+      "type": "main"
+    },
+    {
+      "id": "4",
+      "name": "Monkey D. Luffy",
+      "type": "main"
+    }
+  ]
+}

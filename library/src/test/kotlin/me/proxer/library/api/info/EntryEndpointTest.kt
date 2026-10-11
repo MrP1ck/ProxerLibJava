@@ -100,7 +100,13 @@ class EntryEndpointTest : ProxerTest() {
                     | Kurzum ein Abenteuer, das es zu bestehen gilt.
                 """.trimMargin().replace("\n", "")
             )
-        )
+        ),
+        mediaFormat = "tv",
+        ranking = 69,
+        cleanedRating = 9.65f,
+        bayesianRating = 9.64f,
+        availableEpisodeAmount = 88,
+        isDeactivatedForApps = true
     )
 
     @Test

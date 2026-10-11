@@ -67,6 +67,16 @@ class ProxerUrlsTest {
     }
 
     @Test
+    fun testCharacterImage() {
+        ProxerUrls.characterImage("4").toString() shouldBeEqualTo "https://cdn.proxer.me/character/4.jpg"
+    }
+
+    @Test
+    fun testPersonImage() {
+        ProxerUrls.personImage("701").toString() shouldBeEqualTo "https://cdn.proxer.me/person/701.jpg"
+    }
+
+    @Test
     fun testHosterImage() {
         ProxerUrls.hosterImage("play.png").toString() shouldBeEqualTo "https://proxer.me/images/hoster/play.png"
     }
@@ -141,6 +151,16 @@ class ProxerUrlsTest {
     @Test
     fun testIndustryWeb() {
         ProxerUrls.industryWeb("453").toString() shouldBeEqualTo "https://proxer.me/industry/453?device=default"
+    }
+
+    @Test
+    fun testCharacterWeb() {
+        ProxerUrls.characterWeb("4").toString() shouldBeEqualTo "https://proxer.me/character?id=4"
+    }
+
+    @Test
+    fun testPersonWeb() {
+        ProxerUrls.personWeb("701").toString() shouldBeEqualTo "https://proxer.me/persons?id=701"
     }
 
     @Test

@@ -1,13 +1,17 @@
 package me.proxer.library.api.info
 
 import me.proxer.library.ProxerCall
+import me.proxer.library.entity.info.Character
 import me.proxer.library.entity.info.Comment
 import me.proxer.library.entity.info.Entry
+import me.proxer.library.entity.info.EntryCharacter
 import me.proxer.library.entity.info.EntryCore
+import me.proxer.library.entity.info.EntryPerson
 import me.proxer.library.entity.info.EpisodeInfo
 import me.proxer.library.entity.info.ForumDiscussion
 import me.proxer.library.entity.info.Industry
 import me.proxer.library.entity.info.MediaUserInfo
+import me.proxer.library.entity.info.Person
 import me.proxer.library.entity.info.Recommendation
 import me.proxer.library.entity.info.Relation
 import me.proxer.library.entity.info.TranslatorGroup
@@ -72,4 +76,16 @@ internal interface InternalApi {
 
     @GET("info/forum")
     fun forumDiscussions(@Query("id") id: String?): ProxerCall<List<ForumDiscussion>>
+
+    @GET("info/characters")
+    fun entryCharacters(@Query("id") id: String?): ProxerCall<List<EntryCharacter>>
+
+    @GET("info/persons")
+    fun entryPersons(@Query("id") id: String?): ProxerCall<List<EntryPerson>>
+
+    @GET("info/character")
+    fun character(@Query("id") id: String?): ProxerCall<Character>
+
+    @GET("info/person")
+    fun person(@Query("id") id: String?): ProxerCall<Person>
 }

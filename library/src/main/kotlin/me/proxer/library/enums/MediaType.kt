@@ -35,11 +35,23 @@ enum class MediaType {
     @Json(name = "hmanga")
     HMANGA,
 
+    @Json(name = "lightnovel")
+    LIGHTNOVEL,
+
+    @Json(name = "webnovel")
+    WEBNOVEL,
+
+    @Json(name = "visualnovel")
+    VISUALNOVEL,
+
     @Json(name = "all-anime")
     ALL_ANIME,
 
     @Json(name = "all-manga")
     ALL_MANGA,
+
+    @Json(name = "all-novel")
+    ALL_NOVEL,
 
     @Json(name = "all")
     ALL,

@@ -123,6 +123,26 @@ object ProxerUrls {
     }
 
     /**
+     * Returns the image link of the character.
+     */
+    fun characterImage(id: String): HttpUrl {
+        return cdnBase.newBuilder()
+            .addPathSegment("character")
+            .addPathSegment("$id.jpg")
+            .build()
+    }
+
+    /**
+     * Returns the image link of the person.
+     */
+    fun personImage(id: String): HttpUrl {
+        return cdnBase.newBuilder()
+            .addPathSegment("person")
+            .addPathSegment("$id.jpg")
+            .build()
+    }
+
+    /**
      * Returns the image link of the industry.
      */
     fun industryImage(id: String): HttpUrl {
@@ -235,6 +255,26 @@ object ProxerUrls {
             .addPathSegment("industry")
             .addPathSegment(id)
             .addQueryParameter("device", ProxerUtils.getSafeApiEnumName(Device.DEFAULT))
+            .build()
+    }
+
+    /**
+     * Returns the link for the web page of the requested character.
+     */
+    fun characterWeb(id: String): HttpUrl {
+        return webBase.newBuilder()
+            .addPathSegment("character")
+            .addQueryParameter("id", id)
+            .build()
+    }
+
+    /**
+     * Returns the link for the web page of the requested person.
+     */
+    fun personWeb(id: String): HttpUrl {
+        return webBase.newBuilder()
+            .addPathSegment("persons")
+            .addQueryParameter("id", id)
             .build()
     }
 

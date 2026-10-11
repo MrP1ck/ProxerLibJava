@@ -108,4 +108,32 @@ class InfoApi internal constructor(retrofit: Retrofit) {
     fun forumDiscussions(entryId: String): ForumDiscussionsEndpoint {
         return ForumDiscussionsEndpoint(internalApi, entryId)
     }
+
+    /**
+     * Returns the respective endpoint.
+     */
+    fun entryCharacters(entryId: String): EntryCharactersEndpoint {
+        return EntryCharactersEndpoint(internalApi, entryId)
+    }
+
+    /**
+     * Returns the respective endpoint.
+     */
+    fun entryPersons(entryId: String): EntryPersonsEndpoint {
+        return EntryPersonsEndpoint(internalApi, entryId)
+    }
+
+    /**
+     * Returns the respective endpoint.
+     */
+    fun character(characterId: String): CharacterEndpoint {
+        return CharacterEndpoint(internalApi, characterId)
+    }
+
+    /**
+     * Returns the respective endpoint.
+     */
+    fun person(personId: String): PersonEndpoint {
+        return PersonEndpoint(internalApi, personId)
+    }
 }
