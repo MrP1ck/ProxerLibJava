@@ -1,7 +1,8 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id "org.jetbrains.kotlin.jvm"
-    id "org.jetbrains.kotlin.kapt"
-    id "org.jetbrains.dokka"
+    id "com.google.devtools.ksp"
 
     id "java-library"
     id "maven-publish"
@@ -9,80 +10,79 @@ plugins {
     id "jacoco"
     id "io.gitlab.arturbosch.detekt"
     id "org.jlleitschuh.gradle.ktlint"
-
-    id "de.fuerstenau.buildconfig"
 }
 
 apply from: "${rootDir}/gradle/dependencies.gradle"
 
-tasks.withType(org.jetbrains.dokka.gradle.DokkaTask).configureEach {
-    dokkaSourceSets {
-        configureEach {
-            sourceLink {
-                localDirectory.set(file("src/main/kotlin"))
-                remoteUrl.set(uri("https://github.com/proxer/ProxerLibJava/tree/master/library/src/main/kotlin").toURL())
-            }
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
 
-            externalDocumentationLink { url.set(new URL("https://square.github.io/retrofit/2.x/retrofit/")) }
-            externalDocumentationLink { url.set(new URL("https://square.github.io/okhttp/3.x/okhttp/")) }
-            externalDocumentationLink { url.set(new URL("https://square.github.io/moshi/1.x/moshi/")) }
-        }
+kotlin {
+    jvmToolchain(17)
+
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_1_8
+        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
     }
 }
 
-tasks.dokkaJavadoc.configure {
-    outputDirectory.set(javadoc.destinationDir)
+tasks.withType(JavaCompile).configureEach {
+    options.release = 8
 }
 
-task sourceJar(type: Jar) {
-    archiveClassifier = "sources"
+// Generates the BuildConfig with the library version, which is used for the default user agent.
+def generatedBuildConfigDir = layout.buildDirectory.dir("generated/buildconfig")
 
-    from sourceSets.main.allSource
+def generateBuildConfig = tasks.register("generateBuildConfig") {
+    def version = project.version.toString()
+    def outputDir = generatedBuildConfigDir
+
+    inputs.property("version", version)
+    outputs.dir(outputDir)
+
+    doLast {
+        def file = outputDir.get().file("me/proxer/library/BuildConfig.kt").asFile
+
+        file.parentFile.mkdirs()
+        file.text = """package me.proxer.library
+
+internal object BuildConfig {
+    const val VERSION = "$version"
 }
-
-task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
-    archiveClassifier = "javadoc"
-
-    from javadoc.destinationDir
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        allWarningsAsErrors = true
-        freeCompilerArgs = ["-Xjsr305=strict", "-progressive"]
+"""
     }
 }
 
-kapt {
-    useBuildCache = true
-}
+sourceSets.main.kotlin.srcDir(generateBuildConfig)
 
-test {
-    finalizedBy jacocoTestReport
+tasks.named("test") {
+    finalizedBy "jacocoTestReport"
 
     useJUnitPlatform()
 }
 
-buildConfig {
-    packageName = "me.proxer.library"
-    version = project.version
-}
-
 jacoco {
-    setToolVersion(jacocoVersion)
+    toolVersion = jacocoVersion
 }
 
 jacocoTestReport {
     reports {
-        xml.enabled = true
-        html.enabled = false
+        xml.required = true
+        html.required = false
     }
 }
 
 ktlint {
-    disabledRules = ["import-ordering"]
     version = ktlintVersion
+
+    // The code base predates the current ktlint rule set, so findings are reported but don't fail the build.
+    ignoreFailures = true
+
+    filter {
+        exclude { it.file.path.contains("/build/") }
+    }
 
     reporters {
         reporter "checkstyle"
@@ -90,10 +90,11 @@ ktlint {
 }
 
 detekt {
-    version = detektVersion
+    toolVersion = detektVersion
     buildUponDefaultConfig = true
 
-    config = files("$rootDir/config/detekt.yml")
+    config.setFrom(files("$rootDir/config/detekt.yml"))
+    baseline = file("$projectDir/detekt-baseline.xml")
 }
 
 publishing {
@@ -103,24 +104,21 @@ publishing {
 
             from components.java
 
-            artifact sourceJar
-            artifact javadocJar
-
             pom {
                 name = "ProxerLibJava"
                 description = "A JVM and Android library, implementing the API of the Proxer.Me website"
-                url = "https://github.com/proxer/ProxerLibJava"
+                url = "https://github.com/MrP1ck/ProxerLibJava"
 
                 scm {
-                    url = "https://github.com/proxer/ProxerLibJava"
-                    connection = "scm:git:https://github.com/proxer/ProxerLibJava"
-                    developerConnection = "scm:git:git@github.com/proxer/ProxerLibJava"
+                    url = "https://github.com/MrP1ck/ProxerLibJava"
+                    connection = "scm:git:https://github.com/MrP1ck/ProxerLibJava"
+                    developerConnection = "scm:git:git@github.com/MrP1ck/ProxerLibJava"
                     tag = "HEAD"
                 }
 
                 issueManagement {
                     system = "GitHub Issues"
-                    url = "https://github.com/proxer/ProxerLibJava/issues"
+                    url = "https://github.com/MrP1ck/ProxerLibJava/issues"
                 }
 
                 licenses {

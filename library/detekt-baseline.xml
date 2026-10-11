@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>SwallowedException:TestUtils.kt$error: Throwable</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:KotlinExtensions.kt$NullPointerException()</ID>
+    <ID>UseRequire:HttpsEnforcingInterceptor.kt$HttpsEnforcingInterceptor$throw IllegalArgumentException("Only use ProxerLib's OkHttp instance with Proxer.Me URLs!")</ID>
+    <ID>UseRequire:OneShotInterceptor.kt$OneShotInterceptor$throw IllegalArgumentException("Only use ProxerLib's OkHttp instance with Proxer.Me URLs!")</ID>
+    <ID>UseRequire:ProxerResponseCallAdapterFactory.kt$ProxerResponseCallAdapterFactory$throw IllegalArgumentException( "ProxerCall return type must be parameterized as ProxerCall&lt;Foo&gt; or ProxerCall&lt;? extends Foo&gt;" )</ID>
+  </CurrentIssues>
+</SmellBaseline>

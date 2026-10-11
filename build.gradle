@@ -3,11 +3,8 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.kotlin.jvm"
-    id "org.jetbrains.kotlin.kapt"
-    id "org.jetbrains.dokka"
-
-    id "com.github.ben-manes.versions"
+    id "org.jetbrains.kotlin.jvm" apply false
+    id "com.google.devtools.ksp" apply false
 }
 
 allprojects {
@@ -15,13 +12,7 @@ allprojects {
     group = rootProject.ext.group
 
     repositories {
-        jcenter()
-    }
-}
-
-tasks.named("dependencyUpdates").configure {
-    rejectVersionIf {
-        !(it.candidate.version ==~ /^[0-9,.v-]+(-r)?$/)
+        mavenCentral()
     }
 }
 
