@@ -1,0 +1,21 @@
+{
+  "error": 0,
+  "message": "Abfrage erfolgreich",
+  "data": [
+    {
+      "name": "Eiichiro Oda",
+      "pid": "701",
+      "type": "original-creator"
+    },
+    {
+      "name": "Justin Cook",
+      "pid": "1272",
+      "type": "misc"
+    },
+    {
+      "name": "Mamoru Hosoda",
+      "pid": "72",
+      "type": "misc"
+    }
+  ]
+}

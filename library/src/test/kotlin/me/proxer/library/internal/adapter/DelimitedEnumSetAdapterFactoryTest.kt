@@ -113,7 +113,7 @@ class DelimitedEnumSetAdapterFactoryTest {
 
     @Test
     fun testFromJsonDifferentDelimiter() {
-        val result = moshi.adapter(GenderWithDelimiterTestClass::class.java).fromJson("""{"genders":"f, m"}""")
+        val result = moshi.adapter(DelimTestClass::class.java).fromJson("""{"genders":"f, m"}""")
 
         result.shouldNotBeNull()
         result.genders shouldBeEqualTo setOf(Gender.MALE, Gender.FEMALE)
@@ -156,8 +156,8 @@ class DelimitedEnumSetAdapterFactoryTest {
 
     @Test
     fun testToJsonMultipleDifferentDelimiter() {
-        val testSubject = GenderWithDelimiterTestClass(setOf(Gender.FEMALE, Gender.MALE))
-        val result = moshi.adapter(GenderWithDelimiterTestClass::class.java).toJson(testSubject)
+        val testSubject = DelimTestClass(setOf(Gender.FEMALE, Gender.MALE))
+        val result = moshi.adapter(DelimTestClass::class.java).toJson(testSubject)
 
         result shouldBeEqualTo """{"genders":"f, m"}"""
     }
@@ -168,7 +168,7 @@ class DelimitedEnumSetAdapterFactoryTest {
     )
 
     @JsonClass(generateAdapter = true)
-    data class GenderWithDelimiterTestClass(
+    data class DelimTestClass(
         @field:DelimitedEnumSet(delimiter = ", ") val genders: Set<Gender>? = null
     )
 

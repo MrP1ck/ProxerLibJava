@@ -1,0 +1,21 @@
+{
+  "error": 0,
+  "message": "Abfrage erfolgreich",
+  "data": [
+    {
+      "id": "4584",
+      "name": "100,000 Won",
+      "text": "[B]100,000 Won[/B] kommt aus Südkorea und arbeitet an Webtoons wie [URL=https://..."
+    },
+    {
+      "id": "4081",
+      "name": "138neko",
+      "text": "[B]138neko[/B] kommt aus Japan und ist für die Arbeit an Manga wie [URL=https://..."
+    },
+    {
+      "id": "4326",
+      "name": "1535",
+      "text": "[B]1535[/B] kommt aus Südkorea und arbeitet an Werken wie [URL=https://proxer.me..."
+    }
+  ]
+}

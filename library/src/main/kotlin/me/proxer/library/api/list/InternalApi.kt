@@ -1,9 +1,11 @@
 package me.proxer.library.api.list
 
 import me.proxer.library.ProxerCall
+import me.proxer.library.entity.list.CharacterCore
 import me.proxer.library.entity.list.IndustryCore
 import me.proxer.library.entity.list.IndustryProject
 import me.proxer.library.entity.list.MediaListEntry
+import me.proxer.library.entity.list.PersonCore
 import me.proxer.library.entity.list.Tag
 import me.proxer.library.entity.list.TranslatorGroupCore
 import me.proxer.library.entity.list.TranslatorGroupProject
@@ -107,4 +109,20 @@ internal interface InternalApi {
         @Query("sort_type") sortType: TagSortType?,
         @Query("subtype") subType: TagSubType?
     ): ProxerCall<List<Tag>>
+
+    @GET("list/characters")
+    fun characterList(
+        @Query("start") searchStart: String?,
+        @Query("contains") search: String?,
+        @Query("p") page: Int?,
+        @Query("limit") limit: Int?
+    ): ProxerCall<List<CharacterCore>>
+
+    @GET("list/persons")
+    fun personList(
+        @Query("start") searchStart: String?,
+        @Query("contains") search: String?,
+        @Query("p") page: Int?,
+        @Query("limit") limit: Int?
+    ): ProxerCall<List<PersonCore>>
 }

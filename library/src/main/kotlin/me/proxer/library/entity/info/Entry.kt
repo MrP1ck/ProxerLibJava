@@ -11,6 +11,7 @@ import me.proxer.library.enums.MediaLanguage
 import me.proxer.library.enums.MediaState
 import me.proxer.library.enums.Medium
 import me.proxer.library.internal.adapter.DelimitedEnumSet
+import me.proxer.library.internal.adapter.NumberBasedBoolean
 
 /**
  * Entity holding all info of an entry. This is everything what [EntryCore] contains and some
@@ -36,6 +37,12 @@ import me.proxer.library.internal.adapter.DelimitedEnumSet
  * @property industries The industries involved in production and marketing.
  * @property tags The tags.
  * @property genres The genres.
+ * @property mediaFormat The format of the medium. For example "tv" or "ona".
+ * @property ranking The place in the ranking of all entries.
+ * @property cleanedRating The average of the ratings, with suspicious votes removed.
+ * @property bayesianRating The bayesian average of the ratings, which the ranking is based on.
+ * @property availableEpisodeAmount The amount of episodes, which are actually available.
+ * @property isDeactivatedForApps If this entry is not available in apps.
  *
  * @author Ruben Gees
  */
@@ -61,7 +68,13 @@ data class Entry(
     @Json(name = "groups") val translatorGroups: List<EntryTranslatorGroup>,
     @Json(name = "publisher") val industries: List<IndustryCore>,
     @Json(name = "tags") val tags: List<InfoTag>,
-    @Json(name = "genres") val genres: List<InfoGenre>
+    @Json(name = "genres") val genres: List<InfoGenre>,
+    @Json(name = "media_format") val mediaFormat: String? = null,
+    @Json(name = "ranking") val ranking: Int? = null,
+    @Json(name = "rating_cleaned_average") val cleanedRating: Float? = null,
+    @Json(name = "rating_bayesian_average") val bayesianRating: Float? = null,
+    @Json(name = "count_available") val availableEpisodeAmount: Int? = null,
+    @field:NumberBasedBoolean @Json(name = "flag_deactivate_apps") val isDeactivatedForApps: Boolean = false
 ) : ProxerIdItem {
 
     /**

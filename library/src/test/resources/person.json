@@ -1,0 +1,58 @@
+{
+  "error": 0,
+  "message": "Abfrage erfolgreich",
+  "data": {
+    "id": "701",
+    "name": "Eiichiro Oda",
+    "gender": "m",
+    "bloodtype": "A",
+    "birthday": "1975-01-01",
+    "birthplace": "Kumamoto / Japan",
+    "nationality": "JP",
+    "residence": "Tokyo / Japan",
+    "description": [
+      {
+        "subject": "intro",
+        "text": "[b]Eiichiro Oda[/b] ist Autor und Zeichner des weltweit erfolgreichen Piratenmangas [url=https://proxer.me/info/2786#top][b][i]\"One Piece\"[/...",
+        "language": "de"
+      }
+    ],
+    "names": [
+      {
+        "name": "Eiichiro Oda",
+        "alternative": "尾田 栄一郎",
+        "type": "name",
+        "display_name": "1"
+      }
+    ],
+    "occupations": [
+      {
+        "type": "seiuu"
+      },
+      {
+        "type": "mangaka"
+      }
+    ],
+    "sites": [],
+    "entrys": [
+      {
+        "eid": "53",
+        "type": "original-creator",
+        "name": "One Piece"
+      },
+      {
+        "eid": "2786",
+        "type": "author-art",
+        "name": "One Piece"
+      }
+    ],
+    "characters": [
+      {
+        "cid": "3990",
+        "type": "seiyuu",
+        "language": "jp",
+        "name": "Odacchi"
+      }
+    ]
+  }
+}

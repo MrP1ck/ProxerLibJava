@@ -59,4 +59,18 @@ class ListApi internal constructor(retrofit: Retrofit) {
     fun tagList(): TagListEndpoint {
         return TagListEndpoint(internalApi)
     }
+
+    /**
+     * Returns the respective endpoint.
+     */
+    fun characterList(): CharacterListEndpoint {
+        return CharacterListEndpoint(internalApi)
+    }
+
+    /**
+     * Returns the respective endpoint.
+     */
+    fun personList(): PersonListEndpoint {
+        return PersonListEndpoint(internalApi)
+    }
 }

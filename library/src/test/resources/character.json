@@ -1,0 +1,84 @@
+{
+  "error": 0,
+  "message": "Abfrage erfolgreich",
+  "data": {
+    "id": "4",
+    "name": "Monkey D. Luffy",
+    "gender": "m",
+    "hair_color": "#000000",
+    "eye_color": "#000000",
+    "bloodtype": "B",
+    "birthday": "0000-05-05",
+    "height": "172",
+    "weight": "",
+    "description": [
+      {
+        "subject": "intro",
+        "text": "[b]Monkey D. Luffys[/b] ist es der nächste [i]Piratenkönig[/i] zu werden, welches er zusammen mit seinen Freunden, der [i]Strohhutbande[/i],...",
+        "language": "de"
+      },
+      {
+        "subject": "appearance",
+        "text": "Ruffy hat schwarze Haare und Augen. Sein wichtigstes Merkmal ist sein Strohhut, den er in seiner Kindheit von [url=https://proxer.me/charact...",
+        "language": "de"
+      },
+      {
+        "subject": "personality",
+        "text": "Ruffy ist ein bisschen naiv. Außerdem neigt er dazu eigentlich komplizierte Dinge zu simplifizieren und sehr locker zu sehen. Generell ist e...",
+        "language": "de"
+      },
+      {
+        "subject": "skills",
+        "text": "Ruffy besitzt die Kraft der [i]Gum-Gum-Frucht[/i], mit welcher er seinen Körper beliebig dehnen kann, worauf alle seine Attacken aufbauen. E...",
+        "language": "de"
+      },
+      {
+        "subject": "past",
+        "text": "Zehn Jahre vor Beginn der Haupthandlung lebt Ruffy im [i]Windmühlendorf[/i] im East Blue. Sein Traum ist es ein Pirat zu sein, weshalb er de...",
+        "language": "de"
+      }
+    ],
+    "names": [
+      {
+        "language": "de",
+        "name": "Strohhut-Ruffy",
+        "alternative": "",
+        "type": "pseudonym",
+        "display_name": "0"
+      },
+      {
+        "language": "en",
+        "name": "Straw Hat Luffy",
+        "alternative": "",
+        "type": "pseudonym",
+        "display_name": "0"
+      }
+    ],
+    "persons": [
+      {
+        "pid": "670",
+        "type": "seiyuu",
+        "language": "de",
+        "name": "Daniel Schlauch"
+      },
+      {
+        "pid": "1400",
+        "type": "seiyuu",
+        "language": "en",
+        "name": "Colleen Clinkenbeard"
+      }
+    ],
+    "links": [
+      {
+        "eid": "2786",
+        "type": "main",
+        "name": "One Piece"
+      },
+      {
+        "eid": "53",
+        "type": "main",
+        "name": "One Piece"
+      }
+    ]
+  }
+}

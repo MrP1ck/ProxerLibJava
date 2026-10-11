@@ -1,29 +1,26 @@
 ext {
-    version = "5.4.0"
+    version = "5.5.0"
     group = "com.github.proxer"
 
-    gradleVersion = "6.7.1"
+    gradleVersion = "9.8.1"
 
-    kotlinVersion = "1.4.21"
-    kotlinCoroutinesVersion = "1.4.2"
-    dokkaVersion = "1.4.20"
+    kotlinVersion = "2.3.21"
+    kspVersion = "2.3.12"
+    kotlinCoroutinesVersion = "1.10.2"
 
-    jacocoVersion = "0.8.6"
-    ktlintPluginVersion = "9.4.1"
-    ktlintVersion = "0.40.0"
-    detektVersion = "1.15.0"
+    jacocoVersion = "0.8.12"
+    ktlintPluginVersion = "14.2.0"
+    ktlintVersion = "1.5.0"
+    detektVersion = "1.23.8"
 
-    gradleVersionsPluginVersion = "0.36.0"
-    buildConfigPluginVersion = "1.1.8"
-
-    retrofitVersion = "2.9.0"
-    okHttpVersion = "4.9.0"
-    okioVersion = "2.9.0"
-    moshiVersion = "1.11.0"
+    retrofitVersion = "2.11.0"
+    okHttpVersion = "4.12.0"
+    okioVersion = "3.9.1"
+    moshiVersion = "1.15.2"
     moshiLazyAdaptersVersion = "2.2"
 
-    junitVersion = "5.7.0"
+    junitVersion = "5.11.4"
     concurrentUnitVersion = "0.4.6"
-    kluentVersion = "1.64"
-    mockkVersion = "1.10.3-jdk8"
+    kluentVersion = "1.73"
+    mockkVersion = "1.13.16"
 }

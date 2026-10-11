@@ -104,7 +104,7 @@ class DelimitedStringSetAdapterFactoryTest {
 
     @Test
     fun testFromJsonDifferentDelimiter() {
-        val result = moshi.adapter(StringSetWithDelimiterTestClass::class.java).fromJson("""{"value":"a, b,c"}""")
+        val result = moshi.adapter(DelimTestClass::class.java).fromJson("""{"value":"a, b,c"}""")
 
         result.shouldNotBeNull()
         result.value shouldBeEqualTo setOf("a", "b,c")
@@ -112,7 +112,7 @@ class DelimitedStringSetAdapterFactoryTest {
 
     @Test
     fun testFromJsonValuesToKeep() {
-        val result = moshi.adapter(StringSetWithValuesToKeepTestClass::class.java).fromJson("""{"value":"a b c"}""")
+        val result = moshi.adapter(KeepTestClass::class.java).fromJson("""{"value":"a b c"}""")
 
         result.shouldNotBeNull()
         result.value shouldBeEqualTo setOf("a b", "c")
@@ -136,8 +136,8 @@ class DelimitedStringSetAdapterFactoryTest {
 
     @Test
     fun testToJsonDifferentDelimiter() {
-        val subject = StringSetWithDelimiterTestClass(setOf("a", "b", "c"))
-        val result = moshi.adapter(StringSetWithDelimiterTestClass::class.java).toJson(subject)
+        val subject = DelimTestClass(setOf("a", "b", "c"))
+        val result = moshi.adapter(DelimTestClass::class.java).toJson(subject)
 
         result shouldBeEqualTo """{"value":"a, b, c"}"""
     }
@@ -148,12 +148,12 @@ class DelimitedStringSetAdapterFactoryTest {
     )
 
     @JsonClass(generateAdapter = true)
-    data class StringSetWithDelimiterTestClass(
+    data class DelimTestClass(
         @field:DelimitedStringSet(delimiter = ", ") val value: Set<String>
     )
 
     @JsonClass(generateAdapter = true)
-    data class StringSetWithValuesToKeepTestClass(
+    data class KeepTestClass(
         @field:DelimitedStringSet(valuesToKeep = ["a b"]) val value: Set<String>
     )
 }
